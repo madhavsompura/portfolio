@@ -113,7 +113,7 @@ export default function About() {
           <li key={n.label} className={`note ${n.tone}`} style={{ "--r": `${[-3, 2, -2, 3][i]}deg` } as React.CSSProperties}>
             <span className="note-emoji" aria-hidden>{n.emoji}</span>
             <span className="note-label">{n.label}</span>
-            <strong>{n.value}</strong>
+            <strong>{n.href ? <a className="note-link" href={n.href}>{n.value}</a> : n.value}</strong>
           </li>
         ))}
       </ul>

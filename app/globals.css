@@ -80,6 +80,7 @@ h1 {
   box-shadow: 0 1px 2px rgba(0,0,0,.05);
 }
 .chip i { width: 16px; height: 16px; border-radius: 5px; background: linear-gradient(135deg, #ff9f7a, #8b7fff); }
+.chip i.chip-mark { display: grid; place-items: center; width: 18px; height: 18px; border-radius: 6px; background: #4A3F99; color: #fff; font-style: normal; font-weight: 800; font-size: 11px; line-height: 1; }
 .chip-logo { width: 18px; height: 18px; object-fit: contain; flex: none; border-radius: 4px; }
 .chip.link { cursor: pointer; transition: transform .2s var(--ease-out), box-shadow .2s, border-color .2s; }
 @media (hover: hover) and (pointer: fine) { .chip.link:hover { transform: translateY(-2px); border-color: #cfcbc1; box-shadow: 0 6px 14px -8px rgba(0,0,0,.25); } }
@@ -1008,3 +1009,51 @@ a, button, [role="button"], .card, .wcard, .ai-card { touch-action: manipulation
 .pool-row .av:first-child { margin-left: 0; }
 .pool-row em { margin-left: auto; font-style: normal; font-weight: 700; font-size: 1.9cqw; color: #12866b; }
 @media (prefers-reduced-motion: reduce) { .pool-map .route, .ai-status i { animation: none; } }
+
+/* the whole AI Stuff card is one big link (thumbnail, title and description) */
+.ai-card { position: relative; }
+.ai-title-link::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.ai-btn { position: relative; z-index: 2; }
+@media (hover: hover) and (pointer: fine) { .ai-card:has(.ai-title-link):hover .ai-vis { transform: scale(1.04); } }
+.note:has(.note-link) { position: relative; }
+.note-link::after { content: " ↗"; font-weight: 500; opacity: .6; }
+.note-link::before { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+
+/* ---------- password protected case studies ---------- */
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+button.wcard { text-align: left; width: 100%; display: flex; flex-direction: column; justify-content: flex-start; align-items: stretch; align-self: start; padding: 0; background: none; border: 0; font: inherit; color: inherit; cursor: pointer; }
+.lock-veil { position: absolute; inset: 0; z-index: 3; display: grid; place-content: center; justify-items: center; gap: 10px; text-align: center; color: #fff; font: 700 clamp(.95rem, 1.5vw, 1.2rem)/1.2 var(--sans); letter-spacing: .01em; background: rgba(14, 16, 20, .58); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); opacity: 0; transition: opacity .25s var(--ease-out); pointer-events: none; }
+.lock-veil svg { padding: 14px; box-sizing: content-box; border-radius: 50%; background: rgba(255,255,255,.14); }
+@media (hover: hover) and (pointer: fine) { .wcard.locked:hover .lock-veil { opacity: 1; } }
+.wcard.locked:focus-visible .lock-veil { opacity: 1; }
+.wcard.locked .go { background: #17211e; color: #fff; filter: none; }
+
+.pw-overlay { position: fixed; inset: 0; z-index: 90; display: grid; grid-template-columns: minmax(0, 1fr); place-items: center; padding: 20px; overflow-y: auto; background: rgba(14, 16, 20, .6); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); animation: pw-fade .2s ease-out; }
+@keyframes pw-fade { from { opacity: 0; } }
+.pw-card { position: relative; width: 100%; max-width: 460px; min-width: 0; padding: 38px 28px 26px; border-radius: 28px; background: #fff; text-align: center; box-shadow: 0 40px 80px -30px rgba(0,0,0,.5); animation: pw-pop .3s var(--ease-out); }
+.pw-card.static { margin: 8vh auto 0; box-shadow: 0 0 0 1px var(--line), 0 30px 60px -40px rgba(0,0,0,.25); }
+@keyframes pw-pop { from { opacity: 0; transform: translateY(14px) scale(.97); } }
+.pw-close { position: absolute; right: 14px; top: 14px; width: 38px; height: 38px; border-radius: 50%; background: #f1f0eb; display: grid; place-items: center; font-size: 14px; cursor: pointer; }
+.pw-lock { width: 60px; height: 60px; margin: 0 auto 16px; border-radius: 50%; display: grid; place-items: center; background: #e8f2ee; color: var(--brand); }
+.pw-form h2 { font-family: var(--display); font-weight: 700; font-size: 1.5rem; letter-spacing: -.03em; line-height: 1.2; }
+.pw-form > p { margin: 10px auto 0; color: var(--muted); font-size: .98rem; line-height: 1.55; max-width: 32ch; }
+.pw-form > p strong { color: var(--text); font-weight: 600; }
+.pw-field { display: flex; gap: 8px; margin-top: 22px; padding: 6px; border-radius: 16px; background: #f4f2ec; box-shadow: inset 0 0 0 1px var(--line); }
+.pw-field:focus-within { box-shadow: inset 0 0 0 2px var(--brand); }
+.pw-field input { flex: 1; min-width: 0; padding: 0 12px; height: 46px; border: 0; outline: 0; background: transparent; font: 500 1rem var(--sans); color: var(--text); }
+.pw-field input[aria-invalid="true"] { color: #b3261e; }
+.pw-field button { height: 46px; padding: 0 22px; border-radius: 12px; background: var(--brand); color: #fff; font: 700 .98rem var(--sans); cursor: pointer; transition: transform .15s, opacity .2s; }
+.pw-field button:disabled { opacity: .45; cursor: default; }
+.pw-field button:not(:disabled):active { transform: scale(.97); }
+.pw-form > .pw-msg { min-height: 1.4em; margin-top: 10px; font-size: .9rem; color: #b3261e; }
+.pw-form.shake { animation: pw-shake .4s; }
+@keyframes pw-shake { 20%, 60% { transform: translateX(-7px); } 40%, 80% { transform: translateX(7px); } }
+@media (prefers-reduced-motion: reduce) { .pw-form.shake, .pw-card, .pw-overlay { animation: none; } }
+.wcard.locked:hover .go svg { transform: none; }
+.case-topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 36px; }
+.case-topbar .back-link { margin-bottom: 0; }
+.lock-again { display: inline-flex; align-items: center; gap: 8px; height: 38px; padding: 0 14px; border-radius: 99px; background: #fff; box-shadow: 0 0 0 1px var(--line); font: 600 .88rem var(--sans); color: var(--text); cursor: pointer; transition: transform .15s; }
+.lock-again:active { transform: scale(.97); }
+.pw-form, .pw-field { min-width: 0; max-width: 100%; }
+.pw-field input { width: 100%; }
+@media (max-width: 400px) { .pw-card { padding: 34px 20px 22px; border-radius: 24px; } .pw-form h2 { font-size: 1.3rem; } }

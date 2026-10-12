@@ -36,7 +36,7 @@ const cards: CardData[] = [
   },
   {
     title: "Side projects",
-    text: "Things I build for fun — experiments, tools and small products.",
+    text: "Things I build for fun: experiments, tools and small products.",
     cta: "What I've Built",
     href: "/#ai",
     tone: "lilac",

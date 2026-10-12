@@ -99,11 +99,11 @@ export default function FinwiseCase() {
         <h3>Why do expense trackers get abandoned?</h3>
         <p>
           Almost everyone who has tried to track their spending has the same story: a strong first week, a few missed
-          days, and an app quietly forgotten. The tracking itself was never the hard part — <strong>remembering to
+          days, and an app quietly forgotten. The tracking itself was never the hard part: <strong>remembering to
           log every payment</strong> was.
         </p>
         <ul className="cs-list">
-          <li><strong>Logging is a chore.</strong> A ₹20 chai, a ₹534 Swiggy order, a fuel top-up — each one needs you to stop and type.</li>
+          <li><strong>Logging is a chore.</strong> A ₹20 chai, a ₹534 Swiggy order, a fuel top-up, each one needs you to stop and type.</li>
           <li><strong>The data already exists.</strong> Every UPI or card payment already sends an SMS or an email. It just sits in the inbox.</li>
           <li><strong>Totals lie quietly.</strong> Pay a credit-card bill and most trackers count the same money twice: once when you spent it, again when you paid the card.</li>
           <li><strong>Mistakes feel permanent.</strong> One wrong tap and a payment disappears or lands in the wrong place, and trust in the numbers is gone.</li>
@@ -113,7 +113,7 @@ export default function FinwiseCase() {
       {/* ---------- Who it's for ---------- */}
       <section className="cs-sec">
         <Label>Who is it for?</Label>
-        <p className="cs-quote">“I want to know where my money goes — I just don’t want to write it all down.”</p>
+        <p className="cs-quote">“I want to know where my money goes. I just don’t want to write it all down.”</p>
         <div className="cs-tags">
           <span>Pays mostly by UPI &amp; cards</span>
           <span>Gets a bank SMS or email for every debit</span>
@@ -127,7 +127,7 @@ export default function FinwiseCase() {
       {/* ---------- Identifying gaps → insights ---------- */}
       <section className="cs-sec tint">
         <Label>Identifying Gaps</Label>
-        <p>Looking at how people actually track money — and why they stop — four gaps stood out, and each one became a design principle.</p>
+        <p>Looking at how people actually track money, and why they stop, four gaps stood out, and each one became a design principle.</p>
         <div className="cs-grid">
           <div className="cs-insight">
             <b>Capture should be automatic</b>
@@ -139,7 +139,7 @@ export default function FinwiseCase() {
           </div>
           <div className="cs-insight">
             <b>Every action must be undoable</b>
-            <p>Confirm, dismiss, delete, recategorise — each comes with Undo. Dismissed payments can always be brought back. Nothing is ever lost.</p>
+            <p>Confirm, dismiss, delete, recategorise: each comes with Undo. Dismissed payments can always be brought back. Nothing is ever lost.</p>
           </div>
           <div className="cs-insight">
             <b>Money data stays with you</b>
@@ -153,7 +153,7 @@ export default function FinwiseCase() {
         <Label>How It Works</Label>
         <p>Every detection source goes through one pipeline, so a payment is understood the same way wherever it came from.</p>
         <div className="cs-flow">
-          <div><small>1</small><b>Bank SMS or debit email</b><span>Read when you tap Refresh — or caught the moment it arrives</span></div>
+          <div><small>1</small><b>Bank SMS or debit email</b><span>Read when you tap Refresh, or caught the moment it arrives</span></div>
           <i>→</i>
           <div><small>2</small><b>Understand it</b><span>Amount, payee, account and reference pulled from the message</span></div>
           <i>→</i>
@@ -161,7 +161,7 @@ export default function FinwiseCase() {
           <i>→</i>
           <div><small>4</small><b>Guess the category</b><span>What you chose last time for this payee, then smart keywords</span></div>
           <i>→</i>
-          <div><small>5</small><b>You confirm</b><span>One tap on a category — with Undo</span></div>
+          <div><small>5</small><b>You confirm</b><span>One tap on a category, with Undo</span></div>
         </div>
       </section>
 
@@ -210,7 +210,7 @@ export default function FinwiseCase() {
               <li>Each payment shows the payee, amount, time and where it came from (SMS or Email).</li>
               <li>The guessed category comes first and is outlined; the rest follow, most-used first.</li>
               <li>Only two are shown, with “View more”, so the rest of Home stays close to the top.</li>
-              <li>✕ marks it “not a payment” — with Undo.</li>
+              <li>✕ marks it “not a payment”, with Undo.</li>
             </ul>
           </div>
         </div>
@@ -259,7 +259,7 @@ export default function FinwiseCase() {
           <Phone><PrivacyScreen /></Phone>
           <div>
             <h3>Settings that build trust</h3>
-            <p>Settings explain what the app does with your data in plain words — and what it doesn’t.</p>
+            <p>Settings explain what the app does with your data in plain words, and what it doesn’t.</p>
             <ul className="cs-list small">
               <li>Message scanning runs only when you tap it. Nothing runs in the background unless you turn it on.</li>
               <li>“Don’t count card bill payments” keeps card bills out of totals, so money isn’t counted twice.</li>
@@ -272,9 +272,9 @@ export default function FinwiseCase() {
       {/* ---------- Edge cases ---------- */}
       <section className="cs-sec tint">
         <Label>The Details That Matter</Label>
-        <p>Bank messages are messy. Most of the craft went into the cases nobody notices — until they go wrong.</p>
+        <p>Bank messages are messy. Most of the craft went into the cases nobody notices, until they go wrong.</p>
         <div className="cs-grid three">
-          <div className="cs-insight"><b>Not every “debit” is a payment</b><p>OTPs, failed or reversed payments and AutoPay set-up messages are ignored — but a SIP actually debited through AutoPay still counts.</p></div>
+          <div className="cs-insight"><b>Not every “debit” is a payment</b><p>OTPs, failed or reversed payments and AutoPay set-up messages are ignored, but a SIP actually debited through AutoPay still counts.</p></div>
           <div className="cs-insight"><b>One payment, many messages</b><p>A bank SMS, a bank email and a merchant receipt for the same payment are matched by reference and counted once.</p></div>
           <div className="cs-insight"><b>Emails are stricter</b><p>Newsletters and receipts are far more common in email, so email detection needs more proof than SMS before suggesting anything.</p></div>
           <div className="cs-insight"><b>Smart, not magic, categories</b><p>“Sharma Tea Stall” matches Food, but “Steakhouse” doesn’t match “tea”. “CRED” is a bill, “Credit Union” isn’t.</p></div>

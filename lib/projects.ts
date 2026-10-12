@@ -17,6 +17,7 @@ export type Project = {
   caseImages?: { src: string; w: number; h: number }[]; // the full case study as image slices, shown after the overview
   inWork?: boolean; // false = has a case-study page but isn't listed in "Some recent work" (e.g. shown under AI Stuff)
   caseKey?: "finwise"; // a case study written as a page component (components/case)
+  locked?: boolean; // password protected: cards show a lock and the page asks for the password (set CASE_PASSWORD in .env.local)
   link?: string; // external case study (e.g. a Figma deck) — the card opens this in a new tab
   role: string;
   timeline: string;
@@ -29,7 +30,7 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "nobroker-rental-agreement",
-    title: "NoBroker — Reimagining Rental Agreement",
+    title: "NoBroker: Reimagining Rental Agreement",
     type: "mobile",
     tag: "Mobile · Rental Agreements",
     year: "2025",
@@ -49,7 +50,7 @@ export const projects: Project[] = [
   },
   {
     slug: "nobroker-partner-app",
-    title: "NoBroker — Rewamping Partner's App",
+    title: "NoBroker: Rewamping Partner's App",
     type: "mobile",
     tag: "Mobile · Home Services",
     year: "2025",
@@ -70,7 +71,7 @@ export const projects: Project[] = [
   },
   {
     slug: "kloudspot-retail-analytics",
-    title: "Kloudspot — Retail Analytics",
+    title: "Kloudspot: Retail Analytics",
     type: "web",
     tag: "Web · Retail Analytics",
     year: "2024",
@@ -79,6 +80,7 @@ export const projects: Project[] = [
     blurb: "An **analytical dashboard** that turns in-store data into insights retailers can act on, built for a **PaaS** platform.",
     tags: ["Analytical Dashboard", "UI/UX Design", "PaaS"],
     tint: "#dbe9ec",
+    locked: true,
     thumb: "/work-kloudspot.webp",
     role: "Product Designer",
     timeline: "2024",
@@ -89,7 +91,7 @@ export const projects: Project[] = [
   },
   {
     slug: "nofo",
-    title: "NOFO — Inventory Sorting & Wastage Solution",
+    title: "NOFO: Inventory Sorting & Wastage Solution",
     type: "mobile",
     tag: "Mobile · Food & Kitchen",
     year: "2024",
@@ -98,6 +100,7 @@ export const projects: Project[] = [
     blurb: "A kitchen buddy that sorts your **groceries**, plans **shared meals** and flags what's **expiring soon**, so less food goes to waste.",
     tags: ["UX Design", "UI Design", "Visual Design"],
     tint: "#ececec",
+    locked: true,
     thumb: "/work-nofo.webp",
     role: "Product Designer",
     timeline: "2024",
@@ -108,13 +111,13 @@ export const projects: Project[] = [
   },
   {
     slug: "finwise",
-    title: "Finwise — Money tracking that does itself",
+    title: "Finwise: Money tracking that does itself",
     type: "mobile",
     tag: "Mobile · Personal Finance",
     year: "2026",
     colors: ["#FBF7EE", "#4A3F99"],
     summary: "A money tracker that reads the payment alerts your bank already sends, so you only have to confirm.",
-    blurb: "Turning bank **SMS and email alerts** into ready-to-confirm expenses — designed and **built by me with AI**.",
+    blurb: "Turning bank **SMS and email alerts** into ready-to-confirm expenses, designed and **built by me with AI**.",
     tags: ["Product Design", "Built with AI", "Personal Finance"],
     tint: "#ece8fb",
     role: "Product Strategy, Interaction & Visual Design, Building",
@@ -141,14 +144,14 @@ export const projects: Project[] = [
     thumb: "/work-iot.webp",
     role: "Product Designer",
     timeline: "2023",
-    team: "—",
+    team: "",
     problem: "Full case study coming soon.",
     solution: "Full case study coming soon.",
     outcome: "Full case study coming soon.",
   },
   {
     slug: "khoka-next",
-    title: "Khoka Next — Personalised Travel",
+    title: "Khoka Next: Personalised Travel",
     type: "mobile",
     tag: "Mobile · Travel",
     year: "2024",
@@ -160,7 +163,7 @@ export const projects: Project[] = [
     thumb: "/work-khoka.webp",
     role: "Product Designer",
     timeline: "2024",
-    team: "—",
+    team: "",
     problem: "Full case study coming soon.",
     solution: "Full case study coming soon.",
     outcome: "Full case study coming soon.",

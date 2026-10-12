@@ -2,7 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import FinwiseCase, { FinwiseShowcase } from "@/components/case/FinwiseCase";
 import Link from "next/link";
+import { cookies } from "next/headers";
 import { notFound, redirect } from "next/navigation";
+import CaseGate from "@/components/CaseGate";
+import LockAgain from "@/components/LockAgain";
+import { ACCESS_COOKIE, tokenValid } from "@/lib/access";
 import { gradient, projects } from "@/lib/projects";
 
 type Params = { slug: string };
@@ -14,7 +18,9 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
   const { slug } = await params;
   const p = projects.find((x) => x.slug === slug);
-  return p ? { title: p.title, description: p.summary } : {};
+  if (!p) return {};
+  if (p.locked) return { title: p.title, description: "Password protected case study." };
+  return { title: p.title, description: p.summary };
 }
 
 export default async function CaseStudy({ params }: { params: Promise<Params> }) {
@@ -24,13 +30,20 @@ export default async function CaseStudy({ params }: { params: Promise<Params> })
 
   const p = projects[i];
   if (p.link) redirect(p.link); // case study lives elsewhere (e.g. a Figma deck)
+  if (p.locked) {
+    const jar = await cookies();
+    if (!tokenValid(jar.get(ACCESS_COOKIE)?.value)) return <CaseGate title={p.title} />;
+  }
   const listed = projects.filter((x) => x.inWork !== false);
   const k = listed.findIndex((x) => x.slug === p.slug);
   const next = listed[(k + 1) % listed.length]; // after an unlisted one (k = -1) this is the first project
 
   return (
     <main id="top" className="case container">
-      <Link href="/#work" className="back-link">← All work</Link>
+      <div className="case-topbar">
+        <Link href="/#work" className="back-link">← All work</Link>
+        {p.locked && <LockAgain />}
+      </div>
 
       <p className="eyebrow">{p.tag} · {p.year}</p>
       <h1 className="case-title">{p.caseTitle ?? p.title}</h1>
@@ -53,7 +66,7 @@ export default async function CaseStudy({ params }: { params: Promise<Params> })
       <div className="facts">
         <div><span>Role</span><strong>{p.role}</strong></div>
         <div><span>Timeline</span><strong>{p.timeline}</strong></div>
-        <div><span>Team</span><strong>{p.team}</strong></div>
+        {p.team && <div><span>Team</span><strong>{p.team}</strong></div>}
       </div>
 
       {p.caseKey === "finwise" ? (

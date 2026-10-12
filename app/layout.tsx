@@ -11,7 +11,7 @@ const hand = Caveat({ subsets: ["latin"], variable: "--font-hand" });
 const cover = Pinyon_Script({ subsets: ["latin"], weight: "400", variable: "--font-cover" });
 
 export const metadata: Metadata = {
-  title: { default: `${site.name} — ${site.role}`, template: `%s — ${site.name}` },
+  title: { default: `${site.name} | ${site.role}`, template: `%s | ${site.name}` },
   description: site.description,
 };
 

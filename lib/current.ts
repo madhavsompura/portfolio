@@ -54,7 +54,7 @@ export const objects: HeroObject[] = [
   },
   {
     id: "phone",
-    title: "Finance tracker",
+    title: "Finwise",
     cta: "View case study",
     href: "/work/finwise",
     newTab: false,
@@ -75,7 +75,7 @@ export const objects: HeroObject[] = [
       [28.38, -0.47],
     ],
     chip: "8cqw",
-    note: { text: "Check out my money tracker", x: 2, y: -17, arrow: "down-right" },
+    note: { text: "Check out Finwise, my money tracker", x: 2, y: -17, arrow: "down-right" },
   },
   {
     id: "laptop",

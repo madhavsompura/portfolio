@@ -60,7 +60,7 @@ export default function Journal() {
   const [open, setOpen] = useState(false);
 
   return (
-    <section className="journal-band" id="journal" aria-label="Journal — who I am">
+    <section className="journal-band" id="journal" aria-label="Journal: who I am">
       <Torn className="top" />
       <Torn className="bot" />
 

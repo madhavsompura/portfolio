@@ -95,14 +95,14 @@ export default function AIStuff() {
                   <span className="spark" aria-hidden>✦</span>
                 )}
               </div>
-              <h3>{it.title}</h3>
+              <h3>{it.cta && it.href ? <a className="ai-title-link" href={it.href}>{it.title}</a> : it.title}</h3>
               <p>{it.desc}</p>
               {it.cta ? (
                 <a className="ai-btn" href={it.href}>
                   {it.cta} <Arrow />
                 </a>
               ) : (
-                <span className="ai-wip">Building it now — follow along soon</span>
+                <span className="ai-wip">Building it now, follow along soon</span>
               )}
             </article>
           ))}

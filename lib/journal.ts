@@ -10,9 +10,9 @@ export const journal = {
   ],
   today: {
     title: "Today",
-    text: "It started with spaces at CEPT. Somewhere in an ethnography class I noticed people live in digital spaces too — I’ve been designing those ever since.",
+    text: "It started with spaces at CEPT. Somewhere in an ethnography class I noticed people live in digital spaces too. I’ve been designing those ever since.",
   },
   // Leave phone empty to hide it.
   contact: { phone: "", city: "Bangalore, India" },
-  note: "Fix the things no one notices — they will, eventually.",
+  note: "Fix the things no one notices. They will, eventually.",
 };
