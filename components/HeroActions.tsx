@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { track } from "@/lib/track";
 import { site } from "@/lib/site";
 
 type Phase = "closed" | "opening" | "open" | "closing";
@@ -33,6 +34,7 @@ export default function HeroActions() {
 
   const open = () => {
     if (phase !== "closed") return;
+    track("resume_opened");
     setPhase("opening");
   };
 
@@ -87,7 +89,7 @@ export default function HeroActions() {
   return (
     <>
       <div className="actions">
-        <a className="act light" href={`mailto:${site.email}?subject=${encodeURIComponent("Hi " + site.firstName + " 👋")}`}>
+        <a className="act light" onClick={() => track("say_hi_clicked")} href={`mailto:${site.email}?subject=${encodeURIComponent("Hi " + site.firstName + " 👋")}`}>
           Say hi <span aria-hidden>👋</span>
         </a>
         <button
@@ -125,7 +127,7 @@ export default function HeroActions() {
             </div>
 
             <div className="rs-actions">
-              <a className="rs-btn" href={site.resumePdf} download="Madhav-Sompura-Resume.pdf">
+              <a className="rs-btn" href={site.resumePdf} download="Madhav-Sompura-Resume.pdf" onClick={() => track("resume_downloaded")}>
                 Download <DownloadIcon />
               </a>
               <button ref={closeRef} className="rs-btn round" onClick={close} aria-label="Close résumé">

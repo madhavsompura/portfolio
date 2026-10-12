@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useState, type CSSProperties } from "react";
 import { journal as j } from "@/lib/journal";
+import { track } from "@/lib/track";
 import { site } from "@/lib/site";
 
 // Deterministic jagged "torn paper" edge.
@@ -89,7 +90,7 @@ export default function Journal() {
           {/* The cover flips open; its back face is the left page */}
           <div className="leaf">
             <div className="face front">
-              <button className="cover-btn" onClick={() => setOpen(true)} aria-expanded={open} aria-label="Open journal" tabIndex={open ? -1 : 0}>
+              <button className="cover-btn" onClick={() => { track("journal_opened"); setOpen(true); }} aria-expanded={open} aria-label="Open journal" tabIndex={open ? -1 : 0}>
                 <span className="cv-title">Journal</span>
                 <span className="collage" aria-hidden>
                   <i className="paper" />

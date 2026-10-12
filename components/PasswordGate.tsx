@@ -1,9 +1,13 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { track } from "@/lib/track";
 
 // The password form. `onUnlocked` runs after the server accepts the password (and has set the cookie).
 export default function PasswordGate({ title, onUnlocked, autoFocus = true }: { title: string; onUnlocked: () => void; autoFocus?: boolean }) {
+  useEffect(() => {
+    track("case_study_gate_viewed", { project: title });
+  }, [title]);
   const [value, setValue] = useState("");
   const [state, setState] = useState<"idle" | "busy" | "wrong" | "error">("idle");
   const input = useRef<HTMLInputElement>(null);
@@ -19,6 +23,7 @@ export default function PasswordGate({ title, onUnlocked, autoFocus = true }: { 
     setState("busy");
     try {
       const res = await fetch("/api/unlock", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ password: value.trim() }) });
+      track(res.ok ? "case_study_unlocked" : "case_study_unlock_failed", { project: title });
       if (res.ok) {
         try {
           sessionStorage.setItem("cs-unlocked", "1");

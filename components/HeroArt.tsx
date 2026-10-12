@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { alive, art, critters, deskBand, deskHint, objects, type Critter, type HeroObject } from "@/lib/current";
+import { track } from "@/lib/track";
 import { site } from "@/lib/site";
 
 // Touch screens fake a "hover" on tap — only react to a real mouse.
@@ -141,6 +142,7 @@ function Interactive({ cfg }: { cfg: HeroObject }) {
   }, []);
 
   useEffect(() => {
+    if (open) track("desk_object_opened", { object: cfg.id });
     tgt.current = open ? openPose() : { ...REST };
     kick();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -382,6 +384,7 @@ function NotepadForm() {
   const send = (e: React.FormEvent) => {
     e.preventDefault();
     const body = msg.trim() || "Hi Madhav,\n\n";
+    track("notepad_email_started");
     window.location.href = `mailto:${site.email}?subject=${encodeURIComponent("Hello from your portfolio 👋")}&body=${encodeURIComponent(body)}`;
   };
 
