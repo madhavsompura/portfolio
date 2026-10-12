@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Name — Product Designer</title>
+  <meta name="description" content="Product designer crafting clear, human-centered digital products.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#work">Skip to work</a>
+
+  <header class="nav" id="nav">
+    <a class="logo" href="#top">Your Name<span>.</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+      </button>
+      <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="hero container">
+      <p class="eyebrow reveal"><span class="dot"></span> Available for new projects</p>
+      <h1 class="reveal">
+        I design products people <em>actually enjoy</em> using.
+      </h1>
+      <p class="lede reveal">
+        Product designer with 5+ years turning messy problems into simple, useful experiences — across fintech, health and SaaS.
+      </p>
+      <div class="hero-cta reveal">
+        <a class="btn primary" href="#work">See my work</a>
+        <a class="btn ghost" href="#contact">Get in touch</a>
+      </div>
+      <ul class="stats reveal">
+        <li><strong>5+</strong><span>Years experience</span></li>
+        <li><strong>30+</strong><span>Products shipped</span></li>
+        <li><strong>12</strong><span>Happy clients</span></li>
+      </ul>
+    </section>
+
+    <!-- WORK -->
+    <section class="section container" id="work">
+      <div class="section-head reveal">
+        <h2>Selected work</h2>
+        <div class="filters" role="tablist" aria-label="Filter projects">
+          <button class="chip active" data-filter="all">All</button>
+          <button class="chip" data-filter="mobile">Mobile</button>
+          <button class="chip" data-filter="web">Web</button>
+          <button class="chip" data-filter="system">Design systems</button>
+        </div>
+      </div>
+
+      <div class="grid" id="grid"></div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section container about" id="about">
+      <div class="about-photo reveal" aria-hidden="true"><span>Your photo</span></div>
+      <div class="about-copy reveal">
+        <h2>Hi, I'm Your Name.</h2>
+        <p>I'm a product designer who loves the space between research, interaction and craft. I work closely with engineers and PMs to ship things that are both beautiful and measurable.</p>
+        <p>Outside of work you'll find me sketching, running, or hunting for the best coffee in town.</p>
+        <h3>Toolkit</h3>
+        <ul class="tags">
+          <li>Figma</li><li>Prototyping</li><li>User research</li><li>Design systems</li><li>Interaction design</li><li>Framer</li><li>HTML/CSS</li>
+        </ul>
+        <a class="btn ghost" href="#" download>Download résumé ↓</a>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section container" id="process">
+      <div class="section-head reveal"><h2>How I work</h2></div>
+      <ol class="steps">
+        <li class="reveal"><span class="num">01</span><h3>Understand</h3><p>Interviews, data and stakeholder workshops to frame the real problem.</p></li>
+        <li class="reveal"><span class="num">02</span><h3>Explore</h3><p>Sketches, flows and low-fi concepts to quickly test many directions.</p></li>
+        <li class="reveal"><span class="num">03</span><h3>Design</h3><p>High-fidelity UI and interactive prototypes, built on a solid system.</p></li>
+        <li class="reveal"><span class="num">04</span><h3>Validate & ship</h3><p>Usability testing, developer handoff and post-launch iteration.</p></li>
+      </ol>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section container contact" id="contact">
+      <div class="contact-card reveal">
+        <h2>Let's build something <em>great</em> together.</h2>
+        <a class="mail" href="mailto:madhavsompura123@gmail.com">madhavsompura123@gmail.com</a>
+        <div class="socials">
+          <a href="#">LinkedIn</a>
+          <a href="#">Dribbble</a>
+          <a href="#">Behance</a>
+          <a href="#">Twitter / X</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer container">
+    <span>© <span id="year"></span> Your Name</span>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <!-- CASE STUDY MODAL -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mTitle" hidden>
+    <div class="modal-backdrop" data-close></div>
+    <article class="modal-panel">
+      <button class="icon-btn modal-close" data-close aria-label="Close">✕</button>
+      <div class="modal-hero" id="mHero"></div>
+      <div class="modal-body">
+        <p class="eyebrow" id="mMeta"></p>
+        <h3 id="mTitle"></h3>
+        <p class="lede" id="mSummary"></p>
+        <div class="facts" id="mFacts"></div>
+        <h4>The problem</h4><p id="mProblem"></p>
+        <h4>What I did</h4><p id="mSolution"></p>
+        <h4>Outcome</h4><p id="mOutcome"></p>
+      </div>
+    </article>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
