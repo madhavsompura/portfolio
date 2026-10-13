@@ -125,7 +125,8 @@ export default function Nav() {
       {/* Name + LinkedIn scroll away with the page */}
       <header className="nav-row">
         <Link className="brand" href="/" onClick={goHome}>
-          <span className="avatar">{site.firstName[0]}</span>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img className="avatar" src="/avatar.webp" alt="" width={50} height={50} />
           <span className="brand-name">{site.name}</span>
         </Link>
 
