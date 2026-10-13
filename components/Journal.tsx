@@ -26,12 +26,12 @@ function Torn({ className }: { className: string }) {
 
 // The right page: things I love doing, as files on a desktop.
 const items: { label: string; pos: CSSProperties; icon: React.ReactNode; tip?: string }[] = [
-  { label: "BikeRides.mov", pos: { left: "7%", top: "8%" }, icon: <span className="ic emoji">🏍️</span>, tip: "Long rides, open roads" },
-  { label: "AppsIBuilt", pos: { left: "50%", top: "5%" }, icon: <span className="ic folder" />, tip: "Ideas → working apps" },
-  { label: "Hyrox.log", pos: { right: "6%", top: "24%" }, icon: <span className="ic emoji">🏋️</span>, tip: "Run, sled, burpees, repeat" },
+  { label: "BikeRides.mov", pos: { left: "6%", top: "21%" }, icon: <span className="ic emoji">🏍️</span>, tip: "Long rides, open roads" },
+  { label: "AppsIBuilt", pos: { right: "10%", top: "21%" }, icon: <span className="ic folder" />, tip: "Ideas → working apps" },
+  { label: "Hyrox.log", pos: { right: "6%", top: "44%" }, icon: <span className="ic emoji">🏋️</span>, tip: "Run, sled, burpees, repeat" },
   {
     label: "NextRace.pdf",
-    pos: { left: "3%", top: "40%" },
+    pos: { left: "3%", top: "47%" },
     icon: (
       <span className="ic bib">
         <i className="pin l" />
@@ -69,6 +69,15 @@ export default function Journal() {
         <div className={`book${open ? " open" : ""}`}>
           {/* Right page (static) */}
           <div className="pg right" inert={!open}>
+            <header className="pg-title">
+              <h3>
+                Things Madhav loves
+                <svg viewBox="0 0 220 14" preserveAspectRatio="none" aria-hidden>
+                  <path d="M3 9 C 30 2, 55 13, 85 7 S 140 2, 170 8 S 205 11, 217 5" fill="none" stroke="#e4572e" strokeWidth="3" strokeLinecap="round" />
+                </svg>
+              </h3>
+              <p>…when Figma is closed. Hover, they have opinions. 👀</p>
+            </header>
             {items.map((it) => (
               <div key={it.label} className={`file ${"right" in it.pos ? "tip-r" : Number.parseFloat(String(it.pos.left)) < 20 ? "tip-l" : ""}`} style={it.pos}>
                 {it.icon}
